@@ -10,14 +10,14 @@ email_usuarios VARCHAR(50) not null,
 primary key (id_usuarios)
 );
 
-CREATE TABLE Pedidos
-(
+CREATE TABLE pedidos(
 id_pedidos INT,
+id_usuarios INT,
 produto_pedidos VARCHAR(50) not null,
 IdDoUsuario_pedidos INT,
 primary key (id_pedidos),
 foreign key (id_usuarios)
-	references
+	REFERENCES
 Usuarios(id_usuarios)
 );
 
@@ -30,6 +30,8 @@ primary key (id_produtos)
 
 CREATE TABLE ProdutosPedidos (
 id_produtospedidos INT,
+id_pedidos INT,
+id_produtos INT,
 IdDoPedido_produtospedidos INT,
 IdDoProduto_produtospedidos INT,
 quantidade_produtospedidos INT,
@@ -43,6 +45,7 @@ Produtos(id_produtos)
 
 CREATE TABLE Comentarios (
 id_comentarios INT,
+id_produtos INT,
 texto_comentarios VARCHAR(300) not null,
 Iddoproduto_comentarios INT,
 foreign key (id_produtos)
